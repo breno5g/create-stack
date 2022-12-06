@@ -8,8 +8,10 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
+    "test:staged": "vitest run",
     "test:ui": "vitest --ui",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@chakra-ui/layout": "^2.1.11",
@@ -46,7 +48,10 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "git-commit-msg-linter": "^4.4.0",
+    "husky": "^8.0.2",
     "jsdom": "^20.0.3",
+    "lint-staged": "^13.1.0",
     "prettier": "^2.8.0",
     "sass": "^1.56.1",
     "typescript": "*",
