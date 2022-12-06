@@ -26,11 +26,13 @@ async function initGit(options) {
 }
 
 async function installPackages(options) {
-  const result = await execa('npm', ['install'], {
+  const result = await execa('npm', ['install', '--legacy-peer-deps'], {
     cwd: options.targetDirectory,
   });
   if (result.failed) {
-    return Promise.reject(new Error('Failed to initialize git'));
+    return Promise.reject(
+      new Error('Failed to initialize install dependecies')
+    );
   }
   return;
 }

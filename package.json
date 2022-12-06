@@ -1,11 +1,11 @@
 {
-  "name": "@breno5g/create-stack",
-  "version": "1.0.0",
+  "name": "create-stack-app",
+  "version": "1.0.3",
   "description": "A CLI to bootstrap my new projects",
   "main": "src/index.js",
   "bin": {
-    "@breno5g/create-stack": "bin/create-stack",
-    "create-stack": "bin/create-stack"
+    "@breno5g/create-stack-app": "bin/create-project",
+    "create-stack-app": "bin/create-project"
   },
   "publishConfig": {
     "access": "public"
