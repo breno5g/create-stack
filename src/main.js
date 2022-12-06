@@ -5,7 +5,6 @@ import path from 'path';
 import { promisify } from 'util';
 import execa from 'execa';
 import Listr from 'listr';
-import { projectInstall } from 'pkg-install';
 
 const access = promisify(fs.access);
 const copy = promisify(ncp);
@@ -18,6 +17,16 @@ async function copyTemplateFiles(options) {
 
 async function initGit(options) {
   const result = await execa('git', ['init'], {
+    cwd: options.targetDirectory,
+  });
+  if (result.failed) {
+    return Promise.reject(new Error('Failed to initialize git'));
+  }
+  return;
+}
+
+async function installPackages(options) {
+  const result = await execa('npm', ['install'], {
     cwd: options.targetDirectory,
   });
   if (result.failed) {
@@ -58,10 +67,7 @@ export async function createProject(options) {
     },
     {
       title: 'Install dependencies',
-      task: () =>
-        projectInstall({
-          cwd: options.targetDirectory,
-        }),
+      task: () => installPackages(options),
       skip: () =>
         !options.runInstall
           ? 'Pass --install to automatically install dependencies'
